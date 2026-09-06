@@ -1,0 +1,22 @@
+services:
+  redis-weather:
+    image: redis:8-alpine
+    container_name: tavli-redis-weather
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_weather_data:/data
+
+  redis-location:
+    image: redis:8-alpine
+    container_name: tavli-redis-location
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_location_data:/data
+
+volumes:
+  redis_weather_data:
+  redis_location_data:
